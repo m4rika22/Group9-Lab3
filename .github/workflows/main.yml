@@ -57,8 +57,8 @@ jobs: # The jobs that run in this workflow
       steps: # The "steps" section contains the individual tasks that will be performed in this job.
         - name: Comment on the new pull request # This is another step that comments on the pull request
           #The commented line bellow would be the one that is only for the first pull request
-          #if: github.event_name == 'pull_request' && github.event.action == 'opened' && github.event.pull_request.number == 6 # Run this step only if the pull request number is 1
-          if: github.event_name == 'pull_request' && github.event.action == 'opened' #If so that the event is triggered by opening a pull_request
+          if: github.event_name == 'pull_request' && github.event.action == 'opened' && github.event.pull_request.number == 1 # If pull request number is 1 triggers
+          #if: github.event_name == 'pull_request' && github.event.action == 'opened' #If so that the event is triggered by opening a pull_request
           uses: peter-evans/create-or-update-comment@v1 # This step uses the "peter-evans/create-or-update-comment" action to create or update a comment on the pull request.
           with:
             issue-number: ${{ github.event.pull_request.number }} # The issue number is obtained from the context of the event that triggered the action.
